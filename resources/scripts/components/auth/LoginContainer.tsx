@@ -98,7 +98,7 @@ function LoginContainer() {
                             style={{
                                 color: 'transparent',
                             }}
-                            src='https://i.imgur.com/Hbum4fc.png'
+                            src='https://i.imgur.com/26Zcf4m.png'
                         />
                     </div>
                     <h2 className='text-xl font-extrabold mb-2'>Login</h2>
