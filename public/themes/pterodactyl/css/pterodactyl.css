@@ -535,7 +535,7 @@ body {
 }
 
 .skin-blue .main-header .navbar .sidebar-toggle {
-    color: #fa4e49;
+    color: #c00f55;
     transition: background-color .2s;
 }
 
@@ -555,7 +555,7 @@ body {
 
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
     background-color: #161616;
-    color: #fa4e49;
+    color: #c00f55;
 }
 
 .skin-blue .main-header .logo:hover {

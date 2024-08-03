@@ -2,7 +2,7 @@
 const Logo = () => {
     return (
         <img
-            src='https://i.imgur.com/mXsTM1w.png' // Убедитесь, что указанный путь к вашему PNG изображению корректен
+            src='https://i.imgur.com/VNcjJVW.png' // Убедитесь, что указанный путь к вашему PNG изображению корректен
             alt='Logo'
             className='flex h-full w-full shrink-0'
             width='190'
