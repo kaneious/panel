@@ -578,8 +578,8 @@ body {
 }
 
 .skin-blue .sidebar-menu > li.active > a {
-    border-left-color: #f55d4f;
-    color: #f55d4f !important;
+    border-left-color: #c30f58;
+    color: #c30f58 !important;
     background: linear-gradient(90deg, rgba(248,81,74,0.20) 0%, rgba(248,81,74,0) 50%) !important;
 }
 
