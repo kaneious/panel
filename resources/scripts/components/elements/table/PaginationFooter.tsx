@@ -52,7 +52,6 @@ const PaginationFooter = ({ pagination, className, onPageSelect }: Props) => {
                 <div className={'flex space-x-1'}>
                     <Button.Text {...buttonProps(1)} disabled={pages.previous.length !== 2}>
                         {/* <ChevronDoubleLeftIcon className={'w-3 h-3'} /> */}
-                        FIXME: Back
                     </Button.Text>
                     {pages.previous.reverse().map((value) => (
                         <Button.Text key={`previous-${value}`} {...buttonProps(value)}>
@@ -69,7 +68,6 @@ const PaginationFooter = ({ pagination, className, onPageSelect }: Props) => {
                     ))}
                     <Button.Text {...buttonProps(total)} disabled={pages.next.length !== 2}>
                         {/* <ChevronDoubleRightIcon className={'w-3 h-3'} /> */}
-                        FIXME: Forwards
                     </Button.Text>
                 </div>
             )}

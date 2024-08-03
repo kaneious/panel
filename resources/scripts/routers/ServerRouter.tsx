@@ -28,6 +28,7 @@ import HugeIconsDashboardSettings from '@/components/elements/hugeicons/Dashboar
 import HugeIconsDatabase from '@/components/elements/hugeicons/Database';
 import HugeIconsFolder from '@/components/elements/hugeicons/Folder';
 import HugeIconsHome from '@/components/elements/hugeicons/Home';
+import HugeIconsPencil from '@/components/elements/hugeicons/Pencil';
 import HugeIconsPeople from '@/components/elements/hugeicons/People';
 import ConflictStateRenderer from '@/components/server/ConflictStateRenderer';
 import InstallListener from '@/components/server/InstallListener';
@@ -139,6 +140,7 @@ export default () => {
     const NavigationUsers = useRef(null);
     const NavigationStartup = useRef(null);
     const NavigationSchedules = useRef(null);
+    const NavigationActivity = useRef(null);
     const NavigationSettings = useRef(null);
     const NavigationShell = useRef(null);
 
@@ -154,6 +156,7 @@ export default () => {
         const ButtonUsers = NavigationUsers.current;
         const ButtonStartup = NavigationStartup.current;
         const ButtonSchedules = NavigationSchedules.current;
+        const ButtonActivity = NavigationActivity.current;
         const ButtonSettings = NavigationSettings.current;
         const ButtonShell = NavigationShell.current;
 
@@ -181,6 +184,8 @@ export default () => {
             return (ButtonSchedules as any).offsetTop + HighlightOffset;
         if (new RegExp(`^/server/${id}/schedules/\\d+$`).test(pathname) && ButtonSchedules != null)
             return (ButtonSchedules as any).offsetTop + HighlightOffset;
+        if (pathname.endsWith(`/server/${id}/activity`) && ButtonActivity != null)
+            return (ButtonActivity as any).offsetTop + HighlightOffset;
         if (pathname.endsWith(`/server/${id}/settings`) && ButtonSettings != null)
             return (ButtonSettings as any).offsetTop + HighlightOffset;
         if (pathname.endsWith(`/server/${id}/shell`) && ButtonShell != null)
@@ -349,6 +354,16 @@ export default () => {
                                             <p>Schedules</p>
                                         </NavLink>
                                     </Can>
+                                    <Can action={'activity.*'} matchAny>
+                                        <NavLink
+                                            className='flex flex-row items-center'
+                                            ref={NavigationActivity}
+                                            to={`/server/${id}/activity`}
+                                        >
+                                            <HugeIconsPencil fill='currentColor' />
+                                            <p>Activity</p>
+                                        </NavLink>
+                                    </Can>
                                     <Can action={['settings.*', 'file.sftp']} matchAny>
                                         <NavLink
                                             className='flex flex-row items-center'
@@ -362,17 +377,6 @@ export default () => {
                                     </Can>
                                 </>
                             )}
-                            <Can action={'startup.software'}>
-                                <NavLink
-                                    className='flex flex-row items-center'
-                                    ref={NavigationShell}
-                                    to={`/server/${id}/shell`}
-                                    end
-                                >
-                                    <HugeIconsController fill='currentColor' />
-                                    <p>Software</p>
-                                </NavLink>
-                            </Can>
                             {/* {rootAdmin && (
                                 <a href={`/admin/servers/view/${serverId}`} target={'_blank'} rel='noreferrer'>
                                     <div className='ml-1'>Manage Server </div>

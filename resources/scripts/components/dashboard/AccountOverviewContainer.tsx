@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 
 import MessageBox from '@/components/MessageBox';
 import ConfigureTwoFactorForm from '@/components/dashboard/forms/ConfigureTwoFactorForm';
+import CreateApiKeyForm from '@/components/dashboard/forms/CreateApiKeyForm';
 import UpdateEmailAddressForm from '@/components/dashboard/forms/UpdateEmailAddressForm';
 import UpdatePasswordForm from '@/components/dashboard/forms/UpdatePasswordForm';
 import ContentBox from '@/components/elements/ContentBox';
@@ -32,19 +33,6 @@ export default () => {
                 </ContentBox>
                 <ContentBox title={'Multi-Factor Authentication'}>
                     <ConfigureTwoFactorForm />
-                </ContentBox>
-                <h2 className='mt-8 font-extrabold text-2xl'>App</h2>
-                <ContentBox title={'Panel Version'}>
-                    <p className='text-sm mb-4'>
-                        This is useful to provide Pyro staff if you run into an unexpected issue.
-                    </p>
-                    <div className='flex flex-col gap-4'>
-                        <Code>{import.meta.env.VITE_PYRODACTYL_VERSION}</Code>
-                        <Code>
-                            Build {import.meta.env.VITE_PYRODACTYL_BUILD_NUMBER}, Commit{' '}
-                            {import.meta.env.VITE_COMMIT_HASH.slice(0, 7)}
-                        </Code>
-                    </div>
                 </ContentBox>
             </div>
         </PageContentBlock>

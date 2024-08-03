@@ -98,21 +98,11 @@ function LoginContainer() {
                             style={{
                                 color: 'transparent',
                             }}
-                            src='https://i.imgur.com/26Zcf4m.png'
+                            src='https://i.imgur.com/e3Mc63O.png'
                         />
                     </div>
                     <h2 className='text-xl font-extrabold mb-2'>Login</h2>
-                    <div className='text-sm mb-6'>
-                        New to Pyro?{' '}
-                        <a
-                            href='https://pyro.host/register'
-                            target='_blank'
-                            className='text-[#fa4e49]'
-                            rel='noreferrer'
-                        >
-                            Sign up
-                        </a>
-                    </div>
+                    <div className='text-sm mb-6'></div>
                     <Field
                         id='usernameOrEmail'
                         type={'text'}

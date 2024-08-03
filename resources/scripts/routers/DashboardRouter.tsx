@@ -16,8 +16,11 @@ import MainSidebar from '@/components/elements/MainSidebar';
 import MainWrapper from '@/components/elements/MainWrapper';
 import Logo from '@/components/elements/PyroLogo';
 import { NotFound } from '@/components/elements/ScreenBlock';
+import HugeIconsCloudUp from '@/components/elements/hugeicons/CloudUp';
+import HugeIconsController from '@/components/elements/hugeicons/Controller';
 import HugeIconsDashboardSettings from '@/components/elements/hugeicons/DashboardSettings';
 import HugeIconsHome from '@/components/elements/hugeicons/Home';
+import HugeIconsSupport from '@/components/elements/hugeicons/Support';
 
 import http from '@/api/http';
 
@@ -130,6 +133,36 @@ export default () => {
                     <NavLink to={'/account'} end className='flex flex-row items-center' ref={NavigationSettings}>
                         <HugeIconsDashboardSettings fill='currentColor' />
                         <p>Settings</p>
+                    </NavLink>
+                    <NavLink
+                        to={'https://my.softcore.pro'}
+                        end
+                        className='flex flex-row items-center'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        <HugeIconsController fill='currentColor' />
+                        <p>Billing</p>
+                    </NavLink>
+                    <NavLink
+                        to={'https://discord.gg/EbUw9ZEuRE'}
+                        end
+                        className='flex flex-row items-center'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        <HugeIconsSupport fill='currentColor' />
+                        <p>Discord</p>
+                    </NavLink>
+                    <NavLink
+                        to={'https://status.softcore.pro'}
+                        end
+                        className='flex flex-row items-center'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        <HugeIconsCloudUp fill='currentColor' />
+                        <p>Status</p>
                     </NavLink>
                 </ul>
             </MainSidebar>

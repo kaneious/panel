@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/elements/button/index';
 // FIXME: add icons back
 import { Dialog } from '@/components/elements/dialog';
+import HugeIconsLink from '@/components/elements/hugeicons/Link';
 
 export default ({ meta }: { meta: Record<string, unknown> }) => {
     const [open, setOpen] = useState(false);
@@ -28,8 +29,7 @@ export default ({ meta }: { meta: Record<string, unknown> }) => {
                 }
                 onClick={() => setOpen(true)}
             >
-                FIXME: Clipboard Icon
-                {/* <ClipboardListIcon className={'w-5 h-5'} /> */}
+                <HugeIconsLink className={'w-5 h-5'} />
             </button>
         </div>
     );
