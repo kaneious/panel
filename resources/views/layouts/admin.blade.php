@@ -41,7 +41,7 @@
             <header class="main-header">
                 <a href="{{ route('index') }}" class="logo">
                     <!--<span>{{ config('app.name', 'Pterodactyl') }}</span>-->
-                    <img src="https://i.imgur.com/favUGUy.png" alt="Image description" width="80" height="42" style="margin-top: 4px;">
+                    <img src="https://i.imgur.com/VNcjJVW.png" alt="Image description" width="80" height="42" style="margin-top: 4px;">
                 </a>
                 <nav class="navbar navbar-static-top">
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
